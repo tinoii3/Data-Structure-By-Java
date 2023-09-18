@@ -14,8 +14,8 @@ public class qArray {
 
     public void enQueue(int data) {
         System.out.println("Enqueue data...");
-        if (front == (size - 1)) {
-            System.out.println("Queue is full!");
+        if (rear == (size - 1)) {
+            System.out.println("Can't input number anymore the queue is full!");
         } else {
             rear++;
             qarray[rear] = data;
