@@ -47,8 +47,8 @@ public class qArray {
         if (isEmpty()) {
             System.out.println("The queue is empty!");
         } else {
-            for (int i = front; i < qarray.length; i++) {
-                System.out.println("Queue "+i+" "+qarray[i]);
+            for (int i = front; i <= rear; i++) {
+                System.out.println("Queue "+ (i+1)+ " "+ qarray[i]);
             }
         }
         System.out.println("-".repeat(50));
