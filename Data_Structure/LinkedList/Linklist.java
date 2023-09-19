@@ -1,4 +1,4 @@
-package Data_Structure.LinkedList;
+package LinkedList;
 
 public class Linklist {
     
@@ -29,29 +29,29 @@ public class Linklist {
         size++;
     }
     
-    public String searchPosition(int position) {
+    public void searchPosition(int position) {
         if(position < 0 || position > size) {
-            return null; // Invalid position
+            System.out.println("Invalid position"); // Invalid position
         }
         
-        System.out.println("Searching for the node...");
+        System.out.println("Searching for the node "+ position);
         Node current = head;
-        for (int i = 0; i < position; i++) {
+        for (int i = 1; i < position; i++) {
             current = current.getNext();
         }
         
-        return "Result : Data is "+current.getData()+ " &&  Next to "+current.getNext(); // Return the node at the specified position
+        System.out.println("Result : Data is "+current.getData()+ " &&  Next to "+current.getNext()); // Return the node at the specified position
     }
     
     public void insertPosition(String data, int position) {
-        if (position < 0 || position > size) {
+        if (position <= 0 || position >= size) {
         System.out.println("Invalid position");
         return;
         }
         
         System.out.println("You insert in Position : "+position);
         Node newNode = new Node(data, null);
-        if(position == 0) { // Insert at the beginning
+        if(position == 1) { // Insert at the beginning
             newNode.setNext(head);
             head = newNode;
             
@@ -61,7 +61,7 @@ public class Linklist {
             
         } else {
             Node current = head;
-            for (int i = 0; i < position - 1; i++) {
+            for (int i = 1; i < position - 1; i++) {
                 current = current.getNext();
             }
             newNode.setNext(current.getNext()); // Set the new node is next to the current node's next
@@ -78,11 +78,11 @@ public class Linklist {
         System.out.println("Remove first in linked list.");
         
         if(head != null) {
-            head = head.getNext(); // Move the head to the next node
-            size--; // Decrease the size of the linked list
+            head = head.getNext();
+            size--; 
             
             if(head == null) {
-                tail = null; // If the list becomes empty, also update the tail to null
+                tail = null; 
             }
         }
     }
@@ -102,31 +102,33 @@ public class Linklist {
         }
         
         Node current = head;
-        while(current.getNext() != tail) { // loop the list until the node before the last node (tail) is reached
+        Node previous = null; // Add a 'previous' variable to track the node before 'current'
+        while (current.getNext() != tail) { // Loop through the list until the node before the last node (tail) is reached
+            previous = current;
             current = current.getNext();
         }
-        
-        current.setNext(null); // Update tail to the new last node
-        tail = current; // Update tail to the new last node
+
+        previous.setNext(null); // Update the 'next' of 'previous' to null
+        tail = previous; // Update the 'tail' to the previous node instead of 'current'
         size--;
     }
     
     public void removePosition(int position) {
         System.out.println("Remove node "+position+" in linked list.");
         
-        if(position < 0 || position > size) {
+        if(position <= 0 || position >= size) {
             System.out.println("Invalid position");
             return;
         }
         
-        if (position == 0) {
+        if (position == 1) {
             head = head.getNext();
             size--;
             return;
         }
         
         Node current = head;
-        for (int i = 0; i < position - 1; i++) {
+        for (int i = 1; i < position - 1; i++) {
             current = current.getNext();
         }
 
@@ -167,41 +169,27 @@ public class Linklist {
     
     public static void main(String[] args) {
         
-        /*Node aNode = new Node("A");
-        System.out.println(aNode.getNext());
-        System.out.println("Address of Node A is : "+aNode);
-        
-        Node bNode = new Node("B", aNode);
-        System.out.println("Node B link to "+bNode.getNext());
-        */
+
         Linklist list = new Linklist();
         
         list.insertFirst("D");
         list.insertFirst("C");
         list.insertFirst("B");
         list.insertFirst("A");
-        //System.out.println("Head of list is "+list.head);
-        //System.out.println("Tail of list is "+list.tail);
-        /*
-        System.out.println("----------------------------------------");
-        
-        list.insertLast("A");
-        list.insertLast("B");
-        list.insertLast("G");
-        System.out.println("Head of list is " +list.head);
-        System.out.println("Tail of list is " +list.tail);
-        System.out.println("Size of list is " +list.size);
-        */
+
         System.out.println("Before".toUpperCase());
         list.showData();
         System.out.println("-".repeat(50));
         System.out.println("After".toUpperCase());
-        //System.out.println(list.searchPosition(2));
         
-        //list.insertPosition("M", 3);
+        //System.out.println(list.searchPosition(2));
+        //list.searchPosition(2);
+        //list.insertPosition("M", 2);
         //list.removeFirst();
         list.removePosition(3);
+        //list.removeLast();
         list.showData();
+        //System.out.println(list.getTail());
         
     }
     
