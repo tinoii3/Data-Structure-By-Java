@@ -2,6 +2,7 @@ package HW;
 import java.util.Random;
 public class LabArray {
     public static void main(String[] args) {
+        // Solution 2 in homework
         /*ArrayList<Integer> arr = new ArrayList<Integer>();
         
         arr.add(26);
@@ -27,6 +28,7 @@ public class LabArray {
         System.out.println("Maximum value of array : "+ max);
         */
 
+        // Solution 3 in homework
         Random rand = new Random();
         int arr2d[][] = new int[15][2];
         int sum = 0;
