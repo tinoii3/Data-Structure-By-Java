@@ -15,8 +15,8 @@ public class qArray {
 
     public void enQueue(int data) {
         System.out.println("Enqueue data...");
-        if (front == (size - 1)) {
-            System.out.println("Queue is full!");
+        if (rear == (size - 1)) {
+            System.out.println("Can't input number anymore the queue is full!");
         } else {
             rear++;
             qarray[rear] = data;
@@ -48,8 +48,8 @@ public class qArray {
         if (isEmpty()) {
             System.out.println("The queue is empty!");
         } else {
-            for (int i = front; i < qarray.length; i++) {
-                System.out.println("Queue "+i+" "+qarray[i]);
+            for (int i = front; i <= rear; i++) {
+                System.out.println("Queue "+ (i+1)+ " "+ qarray[i]);
             }
         }
         System.out.println("-".repeat(50));
