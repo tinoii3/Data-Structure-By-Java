@@ -1,4 +1,5 @@
-package Queue;
+package CircleQueue;
+
 public class Queue {
 
     public static void main(String[] args) {
@@ -15,5 +16,8 @@ public class Queue {
         qa.showData();
 
         qa.enQueue(20);
+        qa.showData();
+
+        qa.enQueue(30);
     }
 }
